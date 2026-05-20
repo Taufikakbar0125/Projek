@@ -1,0 +1,198 @@
+/* CSS PRODI PEMBANGUNAN SOSIAL - UGK */
+
+.hero-prodi {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+}
+
+.hero-bg-img {
+    width: 100%;
+    display: block;
+}
+
+.hero-bg-fallback {
+    width: 100%;
+    height: 300px;
+    background-color: #1a237e;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.hero-body {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+
+.hero-content { animation: fadeInUp 1s ease-out; }
+
+.badge-prodi {
+    display: inline-block;
+    padding: 8px 20px;
+    background: transparent;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: all 0.3s ease;
+}
+.badge-prodi:hover {
+    background: rgba(255,255,255,0.95);
+    border-color: rgba(255,255,255,0.95);
+    color: #000;
+}
+
+.stat-card {
+    background: transparent;
+    padding: 20px 25px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.stat-card:hover {
+    transform: translateX(10px);
+    background: rgba(255,255,255,0.95);
+    border-color: rgba(255,255,255,0.95);
+}
+.stat-card:hover .stat-number,
+.stat-card:hover .stat-label,
+.stat-card:hover .stat-icon { color: #000; }
+.stat-card:hover .stat-icon { border-color: rgba(0,0,0,0.2); }
+
+.stat-icon {
+    width: 55px; height: 55px;
+    background: transparent;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+.stat-number { font-size: 1.6rem; font-weight: 700; margin: 0; color: #fff; transition: color 0.3s; }
+.stat-label  { margin: 0; color: rgba(255,255,255,0.9); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+
+/* INFO BOX */
+.info-box {
+    background: white; padding: 40px 30px; border-radius: 15px; text-align: center;
+    transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    height: 100%; border: 1px solid #eee; cursor: pointer;
+}
+.info-box:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+.info-icon {
+    width: 70px; height: 70px; background: #f8f9fa; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 1.8rem; color: #0d6efd; transition: all 0.3s ease;
+}
+.info-box:hover .info-icon { background: rgba(13,110,253,0.1); transform: scale(1.1); }
+
+/* INFO SLIDER - mobile auto-slide */
+.info-slider { position: relative; }
+.info-slide  { display: none; animation: fadeSlide 0.5s ease; }
+.info-slide.active { display: block; }
+.info-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+.info-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.info-dot.active { background: #0d6efd; }
+
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* KEUNGGULAN */
+.keunggulan-card {
+    background: white; padding: 30px; border-radius: 15px;
+    border-left: 5px solid #ffc107; transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;
+    height: 100%;
+}
+.keunggulan-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+
+.cta-section { background: #1a1a1a; color: white; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* DESKTOP */
+@media (min-width: 992px) {
+    .hero-prodi { min-height: 100vh; }
+    .hero-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-body { padding-top: 100px; }
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+    .hero-bg-img { position: relative; height: auto; object-fit: contain; }
+    .hero-overlay {
+        background: linear-gradient(to bottom,
+            rgba(0,0,0,0.15) 0%,
+            rgba(0,0,0,0.55) 55%,
+            rgba(0,0,0,0.88) 100%
+        );
+    }
+    .hero-body { align-items: center; padding-top: 0; padding-bottom: 0; }
+    .hero-prodi .row { flex-direction: row !important; align-items: center; }
+    .hero-prodi .col-lg-6:first-child { flex: 0 0 55%; max-width: 55%; padding-right: 6px; }
+    .hero-prodi .col-lg-6:last-child  { flex: 0 0 45%; max-width: 45%; padding-left: 6px; }
+
+    .badge-prodi { display: none; }
+    .display-3   { font-size: 1rem !important; margin-bottom: 3px !important; }
+    .hero-content .lead { font-size: 0.58rem; line-height: 1.3; margin-bottom: 6px !important; }
+    .hero-content .d-flex { flex-direction: column !important; gap: 4px !important; }
+    .hero-content .btn { width: 100%; padding: 5px 8px; font-size: 0.65rem; }
+    .hero-content .btn i { display: none; }
+
+    .stat-card   { padding: 6px 8px; border-radius: 8px; margin-bottom: 5px; gap: 7px; }
+    .stat-icon   { width: 26px; height: 26px; font-size: 0.65rem; border-radius: 6px; }
+    .stat-number { font-size: 0.75rem; }
+    .stat-label  { font-size: 0.48rem; letter-spacing: 0; }
+
+    .keunggulan-card { padding: 16px; }
+    .keunggulan-number { font-size: 1.2rem; font-weight: 700; color: #ffc107; margin-bottom: 4px; }
+    .keunggulan-card h4 { font-size: 0.85rem; margin-bottom: 6px; }
+    .keunggulan-card p  { font-size: 0.72rem; margin: 0; line-height: 1.4; }
+}
+
+@media (max-width: 576px) {
+    .hero-prodi .container { padding-left: 8px; padding-right: 8px; }
+    .hero-prodi .col-lg-6:first-child { flex: 0 0 52%; max-width: 52%; padding-right: 4px; }
+    .hero-prodi .col-lg-6:last-child  { flex: 0 0 48%; max-width: 48%; padding-left: 4px; }
+    .display-3 { font-size: 0.9rem !important; }
+    .hero-content .lead { font-size: 0.55rem; }
+    .hero-content .btn  { font-size: 0.6rem; padding: 4px 6px; }
+    .stat-card   { padding: 5px 7px; margin-bottom: 4px; gap: 5px; }
+    .stat-icon   { width: 22px; height: 22px; font-size: 0.58rem; }
+    .stat-number { font-size: 0.68rem; }
+    .stat-label  { font-size: 0.44rem; }
+}
+
+/* MODAL FIX */
+.modal-body img { max-height: 80vh; object-fit: contain; width: 100%; }

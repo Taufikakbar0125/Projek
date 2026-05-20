@@ -1,0 +1,134 @@
+/* ============================================
+   BERITA PAGE - CSS STYLES
+   ============================================ */
+
+:root {
+    --ugk-blue: #140099;
+    --ugk-dark-blue: #0d0066;
+    --ugk-yellow: #ffcc00;
+    --ugk-white: #ffffff;
+    --ugk-dark: #333333;
+    --ugk-gray: #777777;
+}
+
+body {
+    background-color: var(--ugk-white) !important;
+    background-image: none !important;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--ugk-blue) 0%, var(--ugk-dark-blue) 100%);
+    color: var(--ugk-white);
+    padding: 60px 0 40px 0;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+.page-header .container { position: relative; z-index: 1; }
+.page-header h1 { font-size: 2.5em; font-weight: bold; margin-bottom: 10px; }
+.page-header .breadcrumb { background: transparent; padding: 0; margin: 0; }
+.page-header .breadcrumb-item { color: rgba(255,255,255,0.8); }
+.page-header .breadcrumb-item.active { color: var(--ugk-yellow); }
+.page-header .breadcrumb-item a { color: var(--ugk-white); text-decoration: none; transition: color 0.3s ease; }
+.page-header .breadcrumb-item a:hover { color: var(--ugk-yellow); }
+.page-header .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.6); }
+
+/* Filter Section */
+.filter-section {
+    background: var(--ugk-white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+.filter-section .form-select,
+.filter-section .form-control { border-color: var(--ugk-blue); border-width: 2px; }
+.filter-section .form-select:focus,
+.filter-section .form-control:focus { border-color: var(--ugk-blue); box-shadow: 0 0 0 0.2rem rgba(20,0,153,0.25); }
+.filter-section .btn-primary { background-color: var(--ugk-blue); border-color: var(--ugk-blue); }
+.filter-section .btn-primary:hover { background-color: var(--ugk-dark-blue); border-color: var(--ugk-dark-blue); }
+
+/* News Grid */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.news-card {
+    background-color: var(--ugk-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #eee;
+}
+.news-card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+.news-card img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s ease; }
+
+.news-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.news-meta { font-size: 0.75em; color: var(--ugk-gray); margin-bottom: 10px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+.news-meta .badge { background-color: var(--ugk-yellow); color: var(--ugk-dark); font-weight: 600; padding: 4px 10px; border-radius: 4px; }
+.news-content h3 { font-size: 1.15em; color: var(--ugk-dark); margin-bottom: 10px; line-height: 1.4; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.8em; }
+.news-content p { font-size: 0.875em; color: var(--ugk-gray); margin-bottom: 15px; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.news-content .read-more { color: var(--ugk-blue); font-weight: 600; font-size: 0.875em; text-decoration: none; margin-top: auto; display: inline-flex; align-items: center; gap: 5px; }
+
+/* No News */
+.no-news { text-align: center; padding: 60px 20px; background: var(--ugk-white); border-radius: 8px; border: 1px solid #eee; }
+.no-news i { font-size: 4em; color: var(--ugk-gray); margin-bottom: 20px; opacity: 0.5; }
+
+/* Pagination */
+.pagination-wrapper { display: flex; justify-content: center; margin: 50px 0; }
+.pagination .page-link { border-radius: 8px; border: 2px solid var(--ugk-blue); color: var(--ugk-blue); font-weight: 600; padding: 10px 18px; margin: 0 5px; transition: 0.3s; }
+.pagination .page-item.active .page-link { background-color: var(--ugk-blue); color: white; }
+
+/* =============================================
+   MOBILE RESPONSIVE
+   ============================================= */
+@media (max-width: 767.98px) {
+
+    /* Header */
+    .page-header { padding: 30px 0 20px 0; margin-bottom: 20px; }
+    .page-header h1 { font-size: 1.4em; margin-bottom: 6px; }
+    .page-header .breadcrumb { font-size: 0.78rem; }
+
+    /* Filter: label disembunyikan, select & search 1 baris penuh */
+    .filter-section { padding: 12px; margin-bottom: 16px; }
+    .filter-section .row { gap: 8px; }
+    .filter-section .col-md-3 { display: none; } /* sembunyikan label "Filter Kategori" */
+    .filter-section .col-md-4,
+    .filter-section .col-md-5 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        padding: 0 !important;
+        margin-bottom: 8px !important;
+    }
+    .filter-section .form-select,
+    .filter-section .form-control { font-size: 0.85rem; padding: 7px 10px; }
+
+    /* News grid: 2 kolom di mobile */
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+    }
+
+    /* Card lebih compact */
+    .news-card img { height: 110px; }
+    .news-content { padding: 10px; }
+    .news-meta { font-size: 0.65em; gap: 6px; margin-bottom: 6px; }
+    .news-meta .badge { padding: 2px 6px; font-size: 0.65em; }
+    .news-content h3 { font-size: 0.8em; min-height: auto; margin-bottom: 5px; -webkit-line-clamp: 3; line-clamp: 3; }
+    .news-content p { font-size: 0.72em; margin-bottom: 8px; -webkit-line-clamp: 2; line-clamp: 2; }
+    .news-content .read-more { font-size: 0.72em; }
+
+    /* Pagination */
+    .pagination-wrapper { margin: 25px 0; }
+    .pagination .page-link { padding: 6px 12px; font-size: 0.8rem; margin: 0 2px; }
+}
